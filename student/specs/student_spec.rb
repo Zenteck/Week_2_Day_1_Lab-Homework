@@ -35,7 +35,11 @@ def test_student_talk
   assert_equal("I wish I was here.", new_student.student_talk)
 end
 
-
-
+def test_student_talk_language
+  new_student = Student.new("Gordon", "G17")
+  chat = new_student.student_talk_language("Python")
+  assert_equal("Gordon says, I love Python.", chat)
+end
+#This is wrong and I know it, why am I passing in the argument again on the assert line?
 
 end
