@@ -35,13 +35,30 @@ class TestSports < MiniTest::Test
   end
 #What is going on here? Why does this appear to work? Seriously!
 
-ß
+  def test_find_player_found
+    new_team = Team.new("Kerbals", ["Jeb", "Bob", "Bill", "Val"], "Gene")
+    search = new_team.find_player("Bob")
+    assert_equal(true, search)
+  end
+
+  def test_find_player_not_found
+    new_team = Team.new("Kerbals", ["Jeb", "Bob", "Bill", "Val"], "Gene")
+    search = new_team.find_player("Neil")
+    assert_equal(false, search)
+  end
+
+  def test_points_won
+    new_team = Team.new("Kerbals", ["Jeb", "Bob", "Bill", "Val"], "Gene")
+    points = new_team.points_change("Win")
+    assert_equal(1, points)
+  end
+
+  def test_points_lost
+    new_team = Team.new("Kerbals", ["Jeb", "Bob", "Bill", "Val"], "Gene")
+    points = new_team.points_change("Lost")
+    assert_equal(0, points)
+  end
 
 
 
 end
-
-# def test_cohort
-#   new_student = Student.new("Gordon", "G17")
-#   assert_equal("G17", new_student.cohort)
-# end
